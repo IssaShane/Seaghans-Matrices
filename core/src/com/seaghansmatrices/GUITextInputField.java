@@ -88,4 +88,9 @@ public class GUITextInputField extends GUIElement {
   }
   
   public TextField getField() { return this.field; }
+
+  @Override
+  public void clear() {
+    this.setText("");
+  }
 }

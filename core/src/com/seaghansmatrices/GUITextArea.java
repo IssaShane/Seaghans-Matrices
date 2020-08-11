@@ -70,4 +70,9 @@ public class GUITextArea extends GUIElement {
 	public String getText() {
 		return this.area.getText();
 	}
+
+	@Override
+	public void clear() {
+		this.setText("");
+	}
 }

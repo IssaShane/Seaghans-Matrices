@@ -85,6 +85,27 @@ public class GUIContainerColumn extends GUIContainer {
 			elem.getPos().print();
 		}
 	}
+
+	@Override
+	public void adjustToFit() {
+		Posn newpos = this.getPos();
+		
+		int newwidth = 0;
+		int newheight = 0;
+		for (GUIElement elem : this.contents) {
+			newheight += elem.getPaddingBottom();
+			newheight += elem.getPaddingTop();
+
+			newheight += elem.getPos().h;
+			if ((elem.getPos().w + elem.getPaddingLeft() + elem.getPaddingRight()) > newwidth) 
+				newwidth = elem.getPos().w + elem.getPaddingLeft() + elem.getPaddingRight();
+		}
+		newpos.w = newwidth;
+		newpos.h = newheight;
+		System.out.print("adjust newpos: ");
+		newpos.print();
+		this.setPos(newpos);
+	}
 	
 	@Override
 	public void setPos(Posn pos) {

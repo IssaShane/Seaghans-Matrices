@@ -84,6 +84,29 @@ public class GUIContainerRow extends GUIContainer {
 			}
 		}
 	}
+
+	@Override
+	public void adjustToFit() {
+		Posn newpos = this.getPos();
+		
+		int newwidth = 0;
+		int newheight = 0;
+		for (GUIElement elem : this.contents) {
+			newwidth += elem.getPaddingLeft();
+			newwidth += elem.getPaddingRight();
+
+			newwidth += elem.getPos().w;
+			if ((elem.getPaddingTop() + elem.getPaddingBottom() + elem.getPos().h) > newheight)
+				newheight = elem.getPaddingTop() + elem.getPaddingBottom() + elem.getPos().h;
+			
+			System.out.println("neww,newh: " + Integer.toString(newwidth) + "," + Integer.toString(newheight));
+		}
+		newpos.w = newwidth;
+		newpos.h = newheight;
+		System.out.print("adjust newpos: ");
+		newpos.print();
+		this.setPos(newpos);
+	}
 	
 	@Override
 	public void setPos(Posn pos) {

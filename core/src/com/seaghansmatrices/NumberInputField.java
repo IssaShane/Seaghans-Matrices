@@ -86,4 +86,9 @@ public class NumberInputField extends GUIElement {
 			return false;
 		}
 	}
+
+	@Override 
+	public void clear() {
+		this.setText("");
+	}
 }

@@ -99,4 +99,9 @@ public class TextLabel extends GUIElement {
 	public void setFontSize(int size) {
 		// TODO: Finish implementing so that this will alter the font size of the label
 	}
+
+	@Override 
+	public void clear() {
+		this.setText("");
+	}
 }

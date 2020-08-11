@@ -40,6 +40,17 @@ public abstract class GUIContainer extends GUIElement {
 	public void addElement(GUIElement elem) {
 		this.contents.add(elem);
 	}
-	
-	
+
+	// expands/contracts the size of this container to fit its contents exactly
+	public abstract void adjustToFit();
+
+	@Override
+	public void clear() {
+		for (GUIElement elem : this.contents) elem.clear();
+		this.contents.clear();
+	}
+
+	public int size() {
+		return this.contents.size();
+	}
 }

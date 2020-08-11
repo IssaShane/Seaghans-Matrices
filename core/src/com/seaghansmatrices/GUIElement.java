@@ -41,6 +41,7 @@ public abstract class GUIElement {
 	public GUILocation getLocation() { return this.location; }
 	
 	abstract protected void addToStage(Stage stage);
+	abstract public void clear(); // for GUIContainers that contain GUIContainers
 	
 	public void setPaddingLeft(int p) { this.padding_left = p; }
 	public void setPaddingRight(int p) { this.padding_right = p; }

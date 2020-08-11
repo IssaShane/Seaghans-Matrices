@@ -36,4 +36,9 @@ public class GUIButton extends GUIElement {
 	public void addListener(EventListener list) {
 		this.button.addListener(list);
 	}
+
+	@Override 
+	public void clear() {
+		this.button.setText("");
+	}
 }

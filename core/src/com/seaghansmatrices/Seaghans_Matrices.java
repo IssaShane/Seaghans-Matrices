@@ -20,7 +20,7 @@ public class Seaghans_Matrices extends ApplicationAdapter {
 
 	GUIButton calculate;
 
-	GUITextParagraph result;
+	GUIMatrixInput result;
 
 	GUIContainer totalview;
 
@@ -48,15 +48,18 @@ public class Seaghans_Matrices extends ApplicationAdapter {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				String solution = libvec.runCommand("matrixmult " + 
 					m1.getContent() + " " + m2.getContent());
+				//convert into proper format
+				solution = solution.replace("\n", "; ");
+				solution = "[" + solution + "]";
 				result.setContent(solution, stage);
 				totalview.calibrateLocations();
 				return true;
 			}
 		});
 
-		result = new GUITextParagraph("", new GUILocation(Alignment.CENTRE, Alignment.CENTRE), skin, "default");
-		result.setContent("hello" + System.lineSeparator() + "world");
-		//result.setPos(new Posn(0,0,200,200));
+		result = new GUIMatrixInput(skin, 30, 30);
+		result.setContent("[1 0; 0 1]", stage);
+		result.setPos(new Posn(0,0,200,200));
 
 		totalview = new GUIContainerColumn(new GUILocation(Alignment.CENTRE, Alignment.CENTRE));
 		totalview.setPos(new Posn(0,0,1024,768));
